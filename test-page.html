@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Page - Back to Top</title>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        padding: 24px;
+        background: #f7f7f7;
+        color: #222;
+      }
+      .section {
+        max-width: 900px;
+        margin: 0 auto 32px auto;
+        background: #fff;
+        padding: 20px 24px;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      }
+      h1,
+      h2 {
+        margin: 0 0 12px 0;
+      }
+      p {
+        margin: 0 0 12px 0;
+      }
+
+      #back-to-top {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        padding: 10px 14px;
+        font-size: 16px;
+        border: none;
+        border-radius: 999px;
+        background: #2a6df4;
+        color: #fff;
+        cursor: pointer;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        transform: translateY(8px);
+        pointer-events: none;
+        transition: opacity 160ms ease, transform 160ms ease, background 160ms ease;
+      }
+      #back-to-top.visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      #back-to-top:hover {
+        background: #1f57c8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="section">
+      <h1>Test Page</h1>
+      <p>
+        This is a simple page with enough content to require scrolling. Use the
+        button in the bottom-right corner to quickly return to the top.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Section 1</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+        ultricies, nunc nec commodo aliquet, lorem nulla accumsan metus, sed
+        bibendum ex mauris vel tortor.
+      </p>
+      <p>
+        Integer non dui vitae justo pretium molestie. Proin placerat, nisl at
+        tincidunt sodales, arcu nibh interdum lacus, sed cursus nibh ipsum sit
+        amet metus.
+      </p>
+      <p>
+        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+        posuere cubilia curae; Morbi sed lorem id sapien varius accumsan.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Section 2</h2>
+      <p>
+        Aliquam erat volutpat. Duis luctus, neque in aliquet pretium, sapien
+        libero dictum dui, ut congue lorem arcu non lectus.
+      </p>
+      <p>
+        Sed consequat lectus ut risus iaculis, nec elementum neque tristique.
+        Donec porta, nunc id tincidunt vulputate, leo metus gravida magna,
+        vitae convallis erat sem non mauris.
+      </p>
+      <p>
+        Phasellus in malesuada massa. Nam sit amet magna vitae metus consequat
+        posuere ut et elit.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Section 3</h2>
+      <p>
+        Mauris sit amet est et odio convallis vehicula. Cras semper neque at
+        velit lacinia, quis placerat nulla pellentesque.
+      </p>
+      <p>
+        Praesent eu mi quis nisl faucibus aliquet. Curabitur porta lectus vel
+        elit tempor, a volutpat ipsum lacinia.
+      </p>
+      <p>
+        In sit amet purus ac lectus dapibus porta. Cras at sem sed nisl
+        malesuada efficitur.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Section 4</h2>
+      <p>
+        Vivamus condimentum mauris ac sapien auctor, non tempus nulla
+        ullamcorper. Integer molestie ultrices volutpat.
+      </p>
+      <p>
+        Aenean volutpat, risus in auctor facilisis, orci tortor tincidunt
+        risus, at consequat odio turpis et justo.
+      </p>
+      <p>
+        Curabitur iaculis urna vitae lectus porta, sed vehicula dolor
+        ullamcorper.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Section 5</h2>
+      <p>
+        Donec blandit, risus eu commodo tristique, nisi justo varius mi, id
+        bibendum erat mauris et purus.
+      </p>
+      <p>
+        Nullam bibendum justo nec nisl euismod, a sollicitudin sem suscipit.
+        Integer at purus a justo interdum consequat.
+      </p>
+      <p>
+        Sed mattis ipsum eget eros tincidunt, nec mattis nulla tincidunt.
+      </p>
+    </div>
+
+    <button id="back-to-top" type="button" aria-label="Back to Top">
+      ↑ Top
+    </button>
+
+    <script>
+      const backToTopButton = document.getElementById("back-to-top");
+      const showAfterPx = 200;
+
+      function updateButtonVisibility() {
+        if (window.scrollY > showAfterPx) {
+          backToTopButton.classList.add("visible");
+        } else {
+          backToTopButton.classList.remove("visible");
+        }
+      }
+
+      backToTopButton.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      window.addEventListener("scroll", updateButtonVisibility);
+      updateButtonVisibility();
+    </script>
+  </body>
+</html>

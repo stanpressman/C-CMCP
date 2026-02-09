@@ -1,0 +1,7 @@
+claude-requests/
+approved/
+cursor-responses/
+validation-reports/
+completed/
+test-page.html
+*.log
