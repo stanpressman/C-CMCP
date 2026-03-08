@@ -35,7 +35,7 @@ $taskContent = Get-Content $TaskFile -Raw
 
 # Create a response file for Cursor AI
 $taskName = [System.IO.Path]::GetFileNameWithoutExtension($TaskFile)
-$responseFile = Join-Path $responseDir "response-$taskName.md"
+$responseFile = [System.IO.Path]::GetFullPath((Join-Path $responseDir "response-$taskName.md"))
 
 Write-Host "`n=== TASK FOR CURSOR AI ===" -ForegroundColor Green
 Write-Host $taskContent
@@ -47,8 +47,10 @@ Write-Host "INSTRUCTIONS FOR CURSOR AI:" -ForegroundColor Yellow
 Write-Host "1. Read the task file: $TaskFile" -ForegroundColor White
 Write-Host "2. Implement the requirements" -ForegroundColor White
 Write-Host "3. Write a summary to: $responseFile" -ForegroundColor White
-Write-Host "4. After completion, move task to: $completedDir" -ForegroundColor White
+Write-Host "4. After completion, leave the task in: $approvedDir" -ForegroundColor White
 Write-Host ""
+Write-Host "Complete, endpoint-to-endpoint, production-ready, UI installed (if requested) and connected implementation. No TODOs, no placeholders, no 'implement later' comments. Full error handling, logging, and validation (if needed or requested). If you can't fit it all, tell me and I'll split the prompt, but whatever you deliver must be 100% functional from the user's viewpoint."
+
 
 # Mark task as processing
 $processingContent = $taskContent -replace "STATUS:\s*APPROVED", "STATUS: PROCESSING"
