@@ -1,0 +1,56 @@
+---
+STATUS: PENDING
+PRIORITY: HIGH
+TASK_TYPE: FEATURE
+TASK_ID: TASK-SF-2026-011
+TIMESTAMP: 2026-05-04
+PROJECT: SilentForge SEO Auto-Blogging SaaS
+VERSION: 0.1.0
+---
+
+# Task: [Title]
+
+## Objective
+[One paragraph]
+
+## Context
+[Background and dependencies]
+
+## Requirements
+
+### MUST (Critical — Blocking)
+- **M1:** [Requirement]
+  - Acceptance: [What done looks like]
+  - Validation: [How to verify]
+
+### SHOULD (Important — Advisory)
+- **S1:** [Requirement]
+
+### COULD (Nice-to-have — Optional)
+- **C1:** [Requirement]
+
+## Files to Create/Modify
+[File tree]
+
+## Expected Behavior
+[Pseudocode workflows]
+
+## Validation Criteria
+[ ] Checkbox list
+
+## Manual Test Plan
+[Numbered curl commands or node scripts]
+
+## Known Constraints
+[Technical limitations]
+
+## Dependencies
+[SF-00X references]
+
+## Notes for Implementer
+[Implementation guidance]
+
+---
+**Implementer:** Use cursor-response-template.md
+**Validator:** [Key tests]
+**Approver:** [Gate condition for next task]

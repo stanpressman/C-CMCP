@@ -5,9 +5,9 @@ param(
     [string]$TaskFile = ""
 )
 
-$approvedDir = "approved"
-$completedDir = "completed"
-$responseDir = "cursor-responses"
+$approvedDir  = Join-Path $PSScriptRoot "approved"
+$completedDir = Join-Path $PSScriptRoot "completed"
+$responseDir  = Join-Path $PSScriptRoot "cursor-responses"
 
 if (-not (Test-Path $approvedDir)) {
     Write-Host "No approved directory found. Run monitor script first." -ForegroundColor Red
@@ -35,7 +35,8 @@ $taskContent = Get-Content $TaskFile -Raw
 
 # Create a response file for Cursor AI
 $taskName = [System.IO.Path]::GetFileNameWithoutExtension($TaskFile)
-$responseFile = [System.IO.Path]::GetFullPath((Join-Path $responseDir "response-$taskName.md"))
+
+$responseFile = Join-Path $responseDir "response-$taskName.md"
 
 Write-Host "`n=== TASK FOR CURSOR AI ===" -ForegroundColor Green
 Write-Host $taskContent
@@ -43,13 +44,19 @@ Write-Host "`n=== END TASK ===" -ForegroundColor Green
 Write-Host ""
 Write-Host "Response will be written to: $responseFile" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "INSTRUCTIONS FOR CURSOR AI:" -ForegroundColor Yellow
-Write-Host "1. Read the task file: $TaskFile" -ForegroundColor White
-Write-Host "2. Implement the requirements" -ForegroundColor White
-Write-Host "3. Write a summary to: $responseFile" -ForegroundColor White
-Write-Host "4. After completion, leave the task in: $approvedDir" -ForegroundColor White
-Write-Host ""
-Write-Host "Complete, endpoint-to-endpoint, production-ready, UI installed (if requested) and connected implementation. No TODOs, no placeholders, no 'implement later' comments. Full error handling, logging, and validation (if needed or requested). If you can't fit it all, tell me and I'll split the prompt, but whatever you deliver must be 100% functional from the user's viewpoint."
+$instructions = @"
+INSTRUCTIONS FOR CURSOR AI:
+1. Read the Task File: $TaskFile
+2. Implement the requirements
+3. Write a summary to: $responseFile
+4. After completion, leave the task in: $approvedDir 
+
+Complete, endpoint-to-endpoint, production-ready, UI installed (if requested) and connected implementation. No TODOs, no placeholders, no 'implement later' comments. Full error handling, logging, and validation (if needed or requested). If you can't fit it all, tell me and I'll split the prompt, but whatever you deliver must be 100% functional from the user's viewpoint.
+
+Do not change the status in the Task File.  Do not move the Task File.
+"@
+Write-Host $instructions
+Set-Clipboard -value $instructions
 
 
 # Mark task as processing
