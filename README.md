@@ -73,12 +73,21 @@ C-CMCP is a portable workflow package that enables structured, quality-controlle
    ```powershell
    .\validate-cursor-work-v3.ps1
    ```
+   - Use another instance of Claude to confirm Cursor's build
 
 6. **Review and decide:**
    - Read the validation report
    - Test the implementation manually
    - Accept (keep changes) or reject (request fixes)
 
+7. **Move or delete the files**
+   ```powershell
+   .\mover.ps1
+   ```
+   - Moves the task, response and validation files
+   - Consolidate them in a single folder
+   - Keep or delete easily
+     
 ## Cost
 
 Validation costs approximately $0.01-0.03 per task using Claude Sonnet 4.5 (varies by task complexity).
@@ -97,6 +106,7 @@ C-CMCP\
 ├── monitor-claude-requests.ps1    # Watch for new tasks
 ├── process-approved-task.ps1      # Prepare task for Cursor
 ├── validate-cursor-work-v3.ps1    # Run QC validation
+├── mover.ps1                      # Consolidate files
 ├── task-file-template.md          # Template for creating tasks
 ├── cursor-response-template.md    # Template for Cursor responses
 ├── validation-report-template.md  # Template for validation reports
@@ -158,6 +168,6 @@ For issues, questions, or improvements:
 
 ---
 
-**Version:** 1.0  
-**Last Updated:** February 9, 2026  
+**Version:** 1.1  
+**Last Updated:** May 23, 2026  
 **Status:** Production Ready
